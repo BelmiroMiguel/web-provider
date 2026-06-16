@@ -1,0 +1,60 @@
+{
+  "name": "@2bbelmiro/web-provider",
+  "version": "1.0.0",
+  "description": "Provider para gerenciamento e compartilhamento de estado em aplicações web.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "clean": "rm -rf dist",
+    "build": "npm run clean && tsc",
+    "prepublishOnly": "npm run build",
+    "lint": "eslint src tests",
+    "test": "vitest run",
+    "test:package": "npm run build && node -e \"import('./dist/index.js').then(() => console.log('package import ok'))\" && npm pack --dry-run --cache /tmp/npm-cache-web-provider",
+    "test:watch": "vitest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BelmiroMiguel/web-provider.git"
+  },
+  "keywords": [
+    "provider",
+    "state-management",
+    "web",
+    "angular"
+  ],
+  "author": "Belmiro Miguel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/BelmiroMiguel/web-provider/issues"
+  },
+  "homepage": "https://github.com/BelmiroMiguel/web-provider#readme",
+  "peerDependencies": {
+    "@angular/core": ">=17.0.0",
+    "rxjs": ">=7.0.0"
+  },
+  "devDependencies": {
+    "@angular/common": "^21.2.17",
+    "@angular/core": "^21.2.17",
+    "@eslint/js": "^9.28.0",
+    "eslint": "^9.28.0",
+    "rxjs": "^7.8.2",
+    "tslib": "^2.8.1",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.34.0",
+    "vitest": "^3.2.4"
+  },
+  "sideEffects": false
+}
